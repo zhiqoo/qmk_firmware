@@ -2,73 +2,68 @@
 #include <stdio.h>
 
 enum layer_number {
-    _FIRST = 0,
-    _SECOND,
-    _THIRD,
-    _FORTH,
+    _L0 = 0,
+    _L1,
+    _L2,
+    _L3,
 };
-
-#define FIRST  TO(_FIRST)
-#define SECOND TO(_SECOND)
-#define THIRD  TO(_THIRD)
-#define FORTH  TO(_FORTH)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_FIRST] = LAYOUT(
+    [_L0] = LAYOUT(
         // ,--------+--------+--------+--------+--------+--------+--------.                      ,--------+--------+--------+--------+--------+--------+--------+--------.
               KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                           KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSLS,  KC_GRV,
         // |--------+--------+--------+--------+--------+--------+--------'                      |--------+--------+--------+--------+--------+--------+--------+--------|
-             XXXXXXX,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC, KC_BSPC,
+             TO(_L1),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------+--------'
-                KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,                                    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,  KC_ENT,
+                KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,                                 XXXXXXX, XXXXXXX, XXXXXXX,    KC_L, KC_SCLN, KC_QUOT,  KC_ENT,
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------|
-             KC_LSFT,    KC_Z,    KC_X,    KC_B,    KC_C,    KC_V,                                    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, XXXXXXX,
-        // |--------+--------+--------+--------+--------+--------+--------+--------.    |--------+--------+--------+--------+--------+--------+--------+--------'
-             KC_LCTL, XXXXXXX,  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WH_D, KC_WH_U,  KC_SPC,          KC_RALT, KC_RGUI
+             KC_LSFT,    KC_Z,    KC_X,    KC_B,    KC_C,    KC_V,                                 XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, XXXXXXX,
+        // |--------+--------+--------+--------+--------+--------+--------+--------.    ,--------+--------+--------+--------+--------+--------+--------+--------'
+             KC_LCTL, MO(_L2),  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WAKE, KC_HENK,  KC_SPC,          KC_RALT, KC_RGUI
         // `--------+--------+--------+-----------------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------'
     ),
-    [_SECOND] = LAYOUT(
-            // ,--------+--------+--------+--------+--------+--------+--------.                      ,--------+--------+--------+--------+--------+--------+--------+--------.
-                  KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                           KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSLS,  KC_GRV,
-            // |--------+--------+--------+--------+--------+--------+--------'                      |--------+--------+--------+--------+--------+--------+--------+--------|
-                 XXXXXXX,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC, KC_BSPC,
-            // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------+--------'
-                    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,                                    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,  KC_ENT,
-            // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------|
-                 KC_LSFT,    KC_Z,    KC_X,    KC_B,    KC_C,    KC_V,                                    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, XXXXXXX,
-            // |--------+--------+--------+--------+--------+--------+--------+--------.    |--------+--------+--------+--------+--------+--------+--------+--------'
-                 KC_LCTL, XXXXXXX,  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WH_D, KC_WH_U,  KC_SPC,          KC_RALT, KC_RGUI
-            // `--------+--------+--------+-----------------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------'
-    ),
-    [_THIRD] = LAYOUT(
+    [_L1] = LAYOUT(
         // ,--------+--------+--------+--------+--------+--------+--------.                      ,--------+--------+--------+--------+--------+--------+--------+--------.
-              KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                           KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSLS,  KC_GRV,
+              KC_ESC,    KC_1,    KC_7,    KC_8,    KC_9,    KC_5,    KC_6,                          KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
         // |--------+--------+--------+--------+--------+--------+--------'                      |--------+--------+--------+--------+--------+--------+--------+--------|
-             XXXXXXX,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC, KC_BSPC,
+             TO(_L0),    KC_Q,    KC_W,    KC_Y,    KC_R,    KC_T,                                 XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCK, KC_PAUS,   KC_UP, XXXXXXX, XXXXXXX,
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------+--------'
-                KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,                                    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,  KC_ENT,
+                KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,                                 XXXXXXX, XXXXXXX, KC_HOME,    KC_L, KC_LEFT, KC_RGHT, XXXXXXX,
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------|
-             KC_LSFT,    KC_Z,    KC_X,    KC_B,    KC_C,    KC_V,                                    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, XXXXXXX,
-        // |--------+--------+--------+--------+--------+--------+--------+--------.    |--------+--------+--------+--------+--------+--------+--------+--------'
-             KC_LCTL, XXXXXXX,  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WH_D, KC_WH_U,  KC_SPC,          KC_RALT, KC_RGUI
+             KC_LSFT,    KC_N,    KC_M,    KC_J,    KC_C,    KC_V,                                 XXXXXXX, XXXXXXX,  KC_END, KC_PGDN, KC_DOWN, XXXXXXX, XXXXXXX,
+        // |--------+--------+--------+--------+--------+--------+--------+--------.    ,--------+--------+--------+--------+--------+--------+--------+--------'
+             KC_LCTL, MO(_L2),  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WAKE, XXXXXXX, XXXXXXX,          XXXXXXX, KC_RGUI
         // `--------+--------+--------+-----------------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------'
     ),
-    [_FORTH] = LAYOUT(
+    [_L2] = LAYOUT(
+        // ,--------+--------+--------+--------+--------+--------+--------.                      ,--------+--------+--------+--------+--------+--------+--------+--------.
+              KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_0, KC_PSCR,                           KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSLS,  KC_GRV,
+        // |--------+--------+--------+--------+--------+--------+--------'                      |--------+--------+--------+--------+--------+--------+--------+--------|
+             TO(_L3),    KC_U,    KC_I,    KC_O,    KC_P,    KC_K,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC, KC_BSPC,
+        // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------+--------'
+                KC_A,    KC_L, KC_LBRC, KC_SCLN,    KC_G,    KC_H,                                    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,  KC_ENT,
+        // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------|
+             KC_LSFT, KC_QUOT, KC_COMM,  KC_DOT,    KC_C,    KC_V,                                    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, MO(_L1),
+        // |--------+--------+--------+--------+--------+--------+--------+--------.    ,--------+--------+--------+--------+--------+--------+--------+--------'
+             KC_LCTL, MO(_L2),  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WAKE,  KC_SPC,  KC_SPC,          KC_RALT, KC_RGUI
+        // `--------+--------+--------+-----------------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------'
+    ),
+    [_L3] = LAYOUT(
         // ,--------+--------+--------+--------+--------+--------+--------.                      ,--------+--------+--------+--------+--------+--------+--------+--------.
               KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                           KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSLS,  KC_GRV,
         // |--------+--------+--------+--------+--------+--------+--------'                      |--------+--------+--------+--------+--------+--------+--------+--------|
-             XXXXXXX,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC, KC_BSPC,
+              KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC, KC_BSPC,
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------+--------'
-                KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,                                    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,  KC_ENT,
+             KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,  KC_ENT,
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------|
-             KC_LSFT,    KC_Z,    KC_X,    KC_B,    KC_C,    KC_V,                                    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, XXXXXXX,
-        // |--------+--------+--------+--------+--------+--------+--------+--------.    |--------+--------+--------+--------+--------+--------+--------+--------'
-             KC_LCTL, XXXXXXX,  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WH_D, KC_WH_U,  KC_SPC,          KC_RALT, KC_RGUI
+             KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, MO(_L1),
+        // |--------+--------+--------+--------+--------+--------+--------+--------.    ,--------+--------+--------+--------+--------+--------+--------+--------'
+             KC_LCTL, TO(_L0), KC_LALT,                    KC_GRV,  KC_SPC, KC_SLEP,      KC_WAKE,  KC_SPC,  KC_SPC,          KC_RALT, KC_RGUI
         // `--------+--------+--------+-----------------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------'
     ),
 };
 
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
 
 static void render_logo(void) {
     static const char PROGMEM qmk_logo[] = {
@@ -85,16 +80,16 @@ static void print_status_narrow(void) {
     oled_write_ln_P(PSTR(""), false);
     oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
-        case _FIRST:
+        case _L0:
             oled_write_ln_P(PSTR("1st"), false);
             break;
-        case _SECOND:
+        case _L1:
             oled_write_ln_P(PSTR("2nd"), false);
             break;
-        case _THIRD:
+        case _L2:
             oled_write_ln_P(PSTR("3rd"), false);
             break;
-        case _FORTH:
+        case _L3:
             oled_write_ln_P(PSTR("4th"), false);
             break;
         default:
@@ -135,7 +130,7 @@ void oled_task_user(void) {
         render_logo();
     }
 }
-#endif // OLED_DRIVER_ENABLE
+#endif // OLED_ENABLE
 
 #ifdef ENCODER_ENABLE
 
