@@ -119,6 +119,8 @@ static void print_status_narrow(void) {
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (is_keyboard_master()) {
         return OLED_ROTATION_270;
+    } else {
+        return OLED_ROTATION_180;
     }
     return rotation;
 }
@@ -181,8 +183,7 @@ void matrix_scan_user(void) {
 }
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) {
-        // Left rotary
+    if (index == 0) { // Left rotary
         if (!clockwise){
             encoder_left_cw.pressed = true;
             encoder_left_cw.time = (timer_read() | 1);
@@ -192,8 +193,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             encoder_left_ccw.time = (timer_read() | 1);
             action_exec(encoder_left_ccw);
         }
-    } else if (index == 1) {
-        // Right rotary Note:Reverse Rotation
+    } else if (index == 1) { // Right rotary Note:Reverse Rotation
         if (!clockwise){
             encoder_right_cw.pressed = true;
             encoder_right_cw.time = (timer_read() | 1);
