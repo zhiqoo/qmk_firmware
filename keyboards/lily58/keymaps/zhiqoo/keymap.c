@@ -2,9 +2,9 @@
 
 enum layer_number {
   _QWERTY = 0,
-  _LOWER,
-  _RAISE,
-  _ADJUST,
+  _LWR,
+  _RSE,
+  _ADJ,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -19,11 +19,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    // |--------+--------+--------+--------+--------+--------|--------.  ,--------|--------+--------+--------+--------+--------+--------|
         KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,    KC_RBRC,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, SFT_T(KC_BSLS),
    // `--------------------------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------------------------'
-                                   KC_LALT, KC_LCTL,C(KC_SPC), KC_SPC,     KC_ENT,KC_BSPC,MO(_LOWER),KC_RGUI
+                                   KC_LALT, KC_LCTL,C(KC_SPC), KC_SPC,     KC_ENT, KC_BSPC,MO(_LWR), KC_RGUI
    //                            `-----------------------------------'  `-----------------------------------'
 ),
 
-[_LOWER] = LAYOUT(
+[_LWR] = LAYOUT(
   // ,-----------------------------------------------------.                    ,-----------------------------------------------------.
         KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
   // |--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            `-----------------------------------'  `-----------------------------------'
 ),
 
-[_RAISE] = LAYOUT(
+[_RSE] = LAYOUT(
   // ,-----------------------------------------------------.                    ,-----------------------------------------------------.
        _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
   // |--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            `-----------------------------------'  `-----------------------------------'
 ),
 
-  [_ADJUST] = LAYOUT(
+  [_ADJ] = LAYOUT(
     // ,-----------------------------------------------------.                    ,-----------------------------------------------------.
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // |--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -67,15 +67,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+  return update_tri_layer_state(state, _LWR, _RSE, _ADJ);
 }
 
-//SSD1306 OLED update loop, make sure to enable OLED_ENABLE=yes in rules.mk
 #ifdef OLED_ENABLE
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   if (!is_keyboard_master())
-    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+    return OLED_ROTATION_180;
   return rotation;
 }
 
@@ -93,7 +92,6 @@ const char *read_keylogs(void);
 
 void oled_task_user(void) {
   if (is_keyboard_master()) {
-    // If you want to change the display of OLED, you need to change here
     oled_write_ln(read_layer_state(), false);
     oled_write_ln(read_keylog(), false);
     oled_write_ln(read_keylogs(), false);
