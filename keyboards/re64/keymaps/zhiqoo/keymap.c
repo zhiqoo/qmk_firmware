@@ -107,11 +107,7 @@ static void print_status_narrow(void) {
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (is_keyboard_master()) {
-        return OLED_ROTATION_270;
-    } else {
-        return OLED_ROTATION_180;
-    }
+    if (is_keyboard_master()) return OLED_ROTATION_270;
     return rotation;
 }
 
@@ -120,6 +116,7 @@ void oled_task_user(void) {
         print_status_narrow();
     }
 }
+
 #endif // OLED_ENABLE
 
 #ifdef ENCODER_ENABLE
@@ -197,88 +194,50 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 #endif // ENCODER_ENABLE
 
 #ifdef RGBLIGHT_LAYERS
-#define HSV_BK 0, 0, 0
-
 const rgblight_segment_t PROGMEM rgb_layer_1st[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_RED}, // left
-    {1, 4, HSV_CYAN},
-    {5, 2, HSV_YELLOW},
-    {7, 1, HSV_WHITE},
-    {8, 5, HSV_CYAN},
-    {13, 1, HSV_MAGENTA},
-    {14, 3, HSV_CYAN},
-    {17, 2, HSV_YELLOW},
-    {19, 1, HSV_MAGENTA},
-    {20, 3, HSV_CYAN},
-    {23, 2, HSV_YELLOW},
-    {25, 1, HSV_MAGENTA},
-    {26, 1, HSV_WHITE},
-    {27, 2, HSV_MAGENTA},
-    {29, 1, HSV_RED},
-    {30, 34, HSV_BK}, // right
+    {0, 1, HSV_RED},      {1, 4, HSV_CYAN},   {5, 2, HSV_YELLOW}, //left
+    {7, 1, HSV_WHITE},    {8, 5, HSV_CYAN},
+    {13, 1, HSV_MAGENTA}, {14, 3, HSV_CYAN},  {17, 2, HSV_YELLOW},
+    {19, 1, HSV_MAGENTA}, {20, 3, HSV_CYAN},  {23, 2, HSV_YELLOW},
+    {25, 1, HSV_MAGENTA}, {26, 1, HSV_WHITE}, {27, 2, HSV_MAGENTA}, {29, 1, HSV_RED},
+    {30, 34, HSV_BLACK}, // right
     {64, 6, HSV_WHITE}, // left back
     {67, 6, HSV_WHITE} //right back
 );
 
 const rgblight_segment_t PROGMEM rgb_layer_2nd[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_RED}, // left
-    {1, 4, HSV_BLUE},
-    {5, 2, HSV_PURPLE},
-    {7, 1, HSV_WHITE},
-    {8, 5, HSV_BLUE},
-    {13, 1, HSV_MAGENTA},
-    {14, 3, HSV_BLUE},
-    {17, 2, HSV_PURPLE},
-    {19, 1, HSV_MAGENTA},
-    {20, 3, HSV_BLUE},
-    {23, 2, HSV_PURPLE},
-    {25, 1, HSV_MAGENTA},
-    {26, 1, HSV_WHITE},
-    {27, 2, HSV_MAGENTA},
-    {29, 1, HSV_RED},
-    {30, 34, HSV_BK}, // right
+    {0, 1, HSV_RED},      {1, 4, HSV_BLUE},   {5, 2, HSV_PURPLE}, // left
+    {7, 1, HSV_WHITE},    {8, 5, HSV_BLUE},
+    {13, 1, HSV_MAGENTA}, {14, 3, HSV_BLUE},  {17, 2, HSV_PURPLE},
+    {19, 1, HSV_MAGENTA}, {20, 3, HSV_BLUE},  {23, 2, HSV_PURPLE},
+    {25, 1, HSV_MAGENTA}, {26, 1, HSV_WHITE}, {27, 2, HSV_MAGENTA}, {29, 1, HSV_RED},
+    {30, 34, HSV_BLACK}, // right
     {64, 6, HSV_WHITE}, // left back
     {67, 6, HSV_WHITE} //right back
 );
 
 const rgblight_segment_t PROGMEM rgb_layer_3rd[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_RED}, // left
-    {1, 4, HSV_CYAN},
-    {5, 2, HSV_YELLOW},
-    {7, 1, HSV_WHITE},
-    {8, 5, HSV_CYAN},
-    {13, 1, HSV_MAGENTA},
-    {14, 3, HSV_CYAN},
-    {17, 2, HSV_YELLOW},
-    {19, 1, HSV_MAGENTA},
-    {20, 3, HSV_CYAN},
-    {23, 2, HSV_YELLOW},
-    {25, 1, HSV_MAGENTA},
-    {26, 1, HSV_WHITE},
-    {27, 2, HSV_MAGENTA},
-    {29, 1, HSV_RED},
-    {30, 34, HSV_BK}, // right
+    {0, 1, HSV_BLACK},  {1, 6, HSV_WHITE}, // left
+    {7, 1, HSV_BLACK},  {8, 5, HSV_WHITE},
+    {13, 1, HSV_BLACK}, {14, 5, HSV_WHITE},
+    {19, 1, HSV_BLACK}, {20, 5, HSV_WHITE},
+    {25, 1, HSV_BLACK}, {26, 1, HSV_RED}, {27, 3, HSV_BLACK},
+    {30, 34, HSV_BLACK}, // right
     {64, 6, HSV_WHITE}, // left back
     {67, 6, HSV_WHITE} //right back
 );
 
 const rgblight_segment_t PROGMEM rgb_layer_4th[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_RED}, // left
-    {1, 4, HSV_CYAN},
-    {5, 2, HSV_YELLOW},
-    {7, 1, HSV_WHITE},
-    {8, 5, HSV_CYAN},
-    {13, 1, HSV_MAGENTA},
-    {14, 3, HSV_CYAN},
-    {17, 2, HSV_YELLOW},
-    {19, 1, HSV_MAGENTA},
-    {20, 3, HSV_CYAN},
-    {23, 2, HSV_YELLOW},
-    {25, 1, HSV_MAGENTA},
-    {26, 1, HSV_WHITE},
-    {27, 2, HSV_MAGENTA},
-    {29, 1, HSV_RED},
-    {30, 34, HSV_BK}, // right
+    {0, 1, HSV_RED}, {1, 6, HSV_PINK}, // left
+    {7, 1, HSV_PURPLE}, {8, 5, HSV_YELLOW},
+    {13, 1, HSV_PURPLE}, {14, 5, HSV_GREEN},
+    {19, 1, HSV_PURPLE}, {20, 5, HSV_CYAN},
+    {25, 5, HSV_BLUE},
+    {30, 8, HSV_PINK}, // right
+    {38, 7, HSV_YELLOW}, {45, 1, HSV_PURPLE},
+    {46, 6, HSV_GREEN}, {52, 1, HSV_PURPLE},
+    {53, 5, HSV_CYAN}, {58, 2, HSV_PURPLE},
+    {60, 4, HSV_BLUE},
     {64, 6, HSV_WHITE}, // left back
     {67, 6, HSV_WHITE} //right back
 );
@@ -302,6 +261,5 @@ void keyboard_post_init_user(void) {
 //
 //     return state;
 // }
-
 
 #endif // RGBLIGHT_LAYERS
