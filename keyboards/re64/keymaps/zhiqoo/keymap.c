@@ -63,20 +63,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+
 #ifdef OLED_ENABLE
 
-static void render_logo(void) {
-    static const char PROGMEM qmk_logo[] = {
-        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
-        0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4,
-        0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0x00
-    };
-
-    oled_write_P(qmk_logo, false);
-}
-
 static void print_status_narrow(void) {
-
     oled_write_ln_P(PSTR(""), false);
     oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
@@ -128,8 +118,6 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 void oled_task_user(void) {
     if (is_keyboard_master()) {
         print_status_narrow();
-    } else {
-        render_logo();
     }
 }
 #endif // OLED_ENABLE
@@ -207,3 +195,113 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     return true;
 }
 #endif // ENCODER_ENABLE
+
+#ifdef RGBLIGHT_LAYERS
+#define HSV_BK 0, 0, 0
+
+const rgblight_segment_t PROGMEM rgb_layer_1st[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, HSV_RED}, // left
+    {1, 4, HSV_CYAN},
+    {5, 2, HSV_YELLOW},
+    {7, 1, HSV_WHITE},
+    {8, 5, HSV_CYAN},
+    {13, 1, HSV_MAGENTA},
+    {14, 3, HSV_CYAN},
+    {17, 2, HSV_YELLOW},
+    {19, 1, HSV_MAGENTA},
+    {20, 3, HSV_CYAN},
+    {23, 2, HSV_YELLOW},
+    {25, 1, HSV_MAGENTA},
+    {26, 1, HSV_WHITE},
+    {27, 2, HSV_MAGENTA},
+    {29, 1, HSV_RED},
+    {30, 34, HSV_BK}, // right
+    {64, 6, HSV_WHITE}, // left back
+    {67, 6, HSV_WHITE} //right back
+);
+
+const rgblight_segment_t PROGMEM rgb_layer_2nd[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, HSV_RED}, // left
+    {1, 4, HSV_BLUE},
+    {5, 2, HSV_PURPLE},
+    {7, 1, HSV_WHITE},
+    {8, 5, HSV_BLUE},
+    {13, 1, HSV_MAGENTA},
+    {14, 3, HSV_BLUE},
+    {17, 2, HSV_PURPLE},
+    {19, 1, HSV_MAGENTA},
+    {20, 3, HSV_BLUE},
+    {23, 2, HSV_PURPLE},
+    {25, 1, HSV_MAGENTA},
+    {26, 1, HSV_WHITE},
+    {27, 2, HSV_MAGENTA},
+    {29, 1, HSV_RED},
+    {30, 34, HSV_BK}, // right
+    {64, 6, HSV_WHITE}, // left back
+    {67, 6, HSV_WHITE} //right back
+);
+
+const rgblight_segment_t PROGMEM rgb_layer_3rd[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, HSV_RED}, // left
+    {1, 4, HSV_CYAN},
+    {5, 2, HSV_YELLOW},
+    {7, 1, HSV_WHITE},
+    {8, 5, HSV_CYAN},
+    {13, 1, HSV_MAGENTA},
+    {14, 3, HSV_CYAN},
+    {17, 2, HSV_YELLOW},
+    {19, 1, HSV_MAGENTA},
+    {20, 3, HSV_CYAN},
+    {23, 2, HSV_YELLOW},
+    {25, 1, HSV_MAGENTA},
+    {26, 1, HSV_WHITE},
+    {27, 2, HSV_MAGENTA},
+    {29, 1, HSV_RED},
+    {30, 34, HSV_BK}, // right
+    {64, 6, HSV_WHITE}, // left back
+    {67, 6, HSV_WHITE} //right back
+);
+
+const rgblight_segment_t PROGMEM rgb_layer_4th[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, HSV_RED}, // left
+    {1, 4, HSV_CYAN},
+    {5, 2, HSV_YELLOW},
+    {7, 1, HSV_WHITE},
+    {8, 5, HSV_CYAN},
+    {13, 1, HSV_MAGENTA},
+    {14, 3, HSV_CYAN},
+    {17, 2, HSV_YELLOW},
+    {19, 1, HSV_MAGENTA},
+    {20, 3, HSV_CYAN},
+    {23, 2, HSV_YELLOW},
+    {25, 1, HSV_MAGENTA},
+    {26, 1, HSV_WHITE},
+    {27, 2, HSV_MAGENTA},
+    {29, 1, HSV_RED},
+    {30, 34, HSV_BK}, // right
+    {64, 6, HSV_WHITE}, // left back
+    {67, 6, HSV_WHITE} //right back
+);
+
+const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    rgb_layer_1st,
+    rgb_layer_2nd,
+    rgb_layer_3rd,
+    rgb_layer_4th
+);
+
+void keyboard_post_init_user(void) {
+    rgblight_layers = rgb_layers;
+}
+
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     rgblight_set_layer_state(0, get_highest_layer(state) == _L0);
+//     rgblight_set_layer_state(1, get_highest_layer(state) == _L1);
+//     rgblight_set_layer_state(2, get_highest_layer(state) == _L2);
+//     rgblight_set_layer_state(3, get_highest_layer(state) == _L3);
+//
+//     return state;
+// }
+
+
+#endif // RGBLIGHT_LAYERS
