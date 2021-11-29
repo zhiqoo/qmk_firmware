@@ -3,6 +3,9 @@
 #include "config_common.h"
 
 #define OLED_FONT_H "./lib/glcdfont_re64.c"
+#define OLED_TIMEOUT 30000
+#define OLED_FADE_OUT
+#define OLED_FADE_OUT_INTERVAL 1
 
 #define VENDOR_ID    0x3938
 #define PRODUCT_ID   0x3634
@@ -39,8 +42,8 @@
 
 #define RGB_DI_PIN D3
 #define RGBLIGHT_LAYERS
-// #define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 76
+// #define RGBLIGHT_ANIMATIONS
 // #define RGBLIGHT_LIMIT_VAL 120
 // #define RGBLIGHT_HUE_STEP 8
 // #define RGBLIGHT_SAT_STEP 8
@@ -86,7 +89,7 @@ L40, L41, L42,      L43, L44,             R40, R41,      R42, R43, \
 )
 
 // #define NO_ACTION_LAYER
-#define NO_ACTION_TAPPING
-#define NO_ACTION_ONESHOT
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
+// #define NO_ACTION_TAPPING
+// #define NO_ACTION_ONESHOT
+// #define NO_ACTION_MACRO
+// #define NO_ACTION_FUNCTION
