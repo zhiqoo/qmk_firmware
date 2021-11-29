@@ -11,28 +11,28 @@ enum layer_number {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_L0] = LAYOUT(
         // ,--------+--------+--------+--------+--------+--------+--------.                      ,--------+--------+--------+--------+--------+--------+--------+--------.
-              KC_ESC,    KC_1,    KC_2,    TO(_L1),    KC_4,    KC_5,    KC_6,                           KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSLS,  KC_GRV,
+              KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                           KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSLS,  KC_GRV,
         // |--------+--------+--------+--------+--------+--------+--------'                      |--------+--------+--------+--------+--------+--------+--------+--------|
-             TO(_L1),    KC_Q,    KC_W,    MO(_L1),    KC_R,    KC_T,                                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
+             TO(_L1),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------+--------'
                 KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,                                 XXXXXXX, XXXXXXX, XXXXXXX,    KC_L, KC_SCLN, KC_QUOT,  KC_ENT,
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------|
              KC_LSFT,    KC_Z,    KC_X,    KC_B,    KC_C,    KC_V,                                 XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, XXXXXXX,
         // |--------+--------+--------+--------+--------+--------+--------+--------.    ,--------+--------+--------+--------+--------+--------+--------+--------'
-             KC_LCTL, TO(_L2),  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WAKE, KC_HENK,  KC_SPC,          KC_RALT, KC_RGUI
+             KC_LCTL, MO(_L2),  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WAKE, KC_HENK,  KC_SPC,          KC_RALT, KC_RGUI
         // `--------+--------+--------+-----------------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------'
     ),
     [_L1] = LAYOUT(
         // ,--------+--------+--------+--------+--------+--------+--------.                      ,--------+--------+--------+--------+--------+--------+--------+--------.
-              KC_ESC,    KC_1,    KC_7,    TO(_L0),    KC_9,    KC_5,    KC_6,                          KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
+              KC_ESC,    KC_1,    KC_7,    KC_8,    KC_9,    KC_5,    KC_6,                          KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
         // |--------+--------+--------+--------+--------+--------+--------'                      |--------+--------+--------+--------+--------+--------+--------+--------|
-             TO(_L0),    KC_Q,    KC_W,    _______,    KC_R,    KC_T,                                 XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCK, KC_PAUS,   KC_UP, XXXXXXX, XXXXXXX,
+             TO(_L0),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                 XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCK, KC_PAUS,   KC_UP, XXXXXXX, XXXXXXX,
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------+--------'
                 KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,                                 XXXXXXX, XXXXXXX, KC_HOME,    KC_L, KC_LEFT, KC_RGHT, XXXXXXX,
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------|
              KC_LSFT,    KC_N,    KC_M,    KC_J,    KC_C,    KC_V,                                 XXXXXXX, XXXXXXX,  KC_END, KC_PGDN, KC_DOWN, XXXXXXX, XXXXXXX,
         // |--------+--------+--------+--------+--------+--------+--------+--------.    ,--------+--------+--------+--------+--------+--------+--------+--------'
-             KC_LCTL, TO(_L2),  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WAKE, XXXXXXX, XXXXXXX,          XXXXXXX, KC_RGUI
+             KC_LCTL, _______,  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WAKE, XXXXXXX, XXXXXXX,          XXXXXXX, KC_RGUI
         // `--------+--------+--------+-----------------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------'
     ),
     [_L2] = LAYOUT(
@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // |--------+--------+--------+--------+--------+--------|                               |--------+--------+--------+--------+--------+--------+--------|
              KC_LSFT, KC_QUOT, KC_COMM,  KC_DOT,    KC_C,    KC_V,                                    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, TO(_L1),
         // |--------+--------+--------+--------+--------+--------+--------+--------.    ,--------+--------+--------+--------+--------+--------+--------+--------'
-             KC_LCTL, TO(_L2),  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WAKE,  KC_SPC,  KC_SPC,          KC_RALT, KC_RGUI
+             KC_LCTL, _______,  KC_SPC,                    KC_GRV,  KC_ENT, KC_SLEP,      KC_WAKE,  KC_SPC,  KC_SPC,          KC_RALT, KC_RGUI
         // `--------+--------+--------+-----------------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------'
     ),
     [_L3] = LAYOUT(
@@ -118,6 +118,7 @@ void oled_task_user(void) {
 
 #ifdef ENCODER_ENABLE
 
+// DO NOT DELETE - THIS ENABLES OLED TIME OUT----
 keyevent_t encoder_left_ccw  = {
     .key = (keypos_t){.row = 1, .col = 6},
     .pressed = false
@@ -163,6 +164,7 @@ keyevent_t encoder_right_cw  = {
 //         action_exec(encoder_right_cw);
 //     }
 // }
+// ----------------------------------------------
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) { // Left rotary
@@ -243,12 +245,12 @@ void keyboard_post_init_user(void) {
     rgblight_layers = rgb_layers;
 }
 
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//     rgblight_set_layer_state(0, get_highest_layer(state) == _L0);
-//     rgblight_set_layer_state(1, get_highest_layer(state) == _L1);
-//     rgblight_set_layer_state(2, get_highest_layer(state) == _L2);
-//     rgblight_set_layer_state(3, get_highest_layer(state) == _L3);
-//     return state;
-// }
+layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, _L0));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _L1));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _L2));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _L3));
+    return state;
+}
 
 #endif // RGBLIGHT_LAYERS
