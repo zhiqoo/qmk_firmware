@@ -16,5 +16,5 @@
 
 #define DIODE_DIRECTION COL2ROW
 
-// #define OLED_FONT_H "lib/glcdfont_lily.c"
-#define OLED_FONT_H "../../drivers/oled/glcdfont.c"
+#define OLED_FONT_H "lib/glcdfont_lily.c"
+// #define OLED_FONT_H "../../drivers/oled/glcdfont.c"
