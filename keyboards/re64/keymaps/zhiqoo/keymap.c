@@ -118,64 +118,16 @@ void oled_task_user(void) {
 
 #ifdef ENCODER_ENABLE
 
-// DO NOT DELETE - THIS ENABLES OLED TIME OUT----
-keyevent_t encoder_left_ccw  = {
-    .key = (keypos_t){.row = 1, .col = 6},
-    .pressed = false
-};
-
-keyevent_t encoder_left_cw  = {
-    .key = (keypos_t){.row = 2, .col = 6},
-    .pressed = false
-};
-
-keyevent_t encoder_right_ccw  = {
-    .key = (keypos_t){.row = 3, .col = 6},
-    .pressed = false
-};
-
-keyevent_t encoder_right_cw  = {
-    .key = (keypos_t){.row = 4, .col = 6},
-    .pressed = false
-};
-
-// void matrix_scan_user(void) {
-//     if (IS_PRESSED(encoder_left_ccw)) {
-//         encoder_left_ccw.pressed = false;
-//         encoder_left_ccw.time = (timer_read() | 1);
-//         action_exec(encoder_left_ccw);
-//     }
-//
-//     if (IS_PRESSED(encoder_left_cw)) {
-//         encoder_left_cw.pressed = false;
-//         encoder_left_cw.time = (timer_read() | 1);
-//         action_exec(encoder_left_cw);
-//     }
-//
-//     if (IS_PRESSED(encoder_right_ccw)) {
-//         encoder_right_ccw.pressed = false;
-//         encoder_right_ccw.time = (timer_read() | 1);
-//         action_exec(encoder_right_ccw);
-//     }
-//
-//     if (IS_PRESSED(encoder_right_cw)) {
-//         encoder_right_cw.pressed = false;
-//         encoder_right_cw.time = (timer_read() | 1);
-//         action_exec(encoder_right_cw);
-//     }
-// }
-// ----------------------------------------------
-
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) { // Left rotary
         if (clockwise){
-            tap_code(KC_WH_U);
-        } else {
             tap_code(KC_WH_D);
+        } else {
+            tap_code(KC_WH_U);
         }
-    } else if (index == 1) { // Right rotary Note:Reverse Rotation
+    } else if (index == 1) { // Right rotary
         if (clockwise){
-            tap_code(KC_VOLU);
+            tap_code(KC_VOLU); // might be inverted
         } else {
             tap_code(KC_VOLD);
         }
