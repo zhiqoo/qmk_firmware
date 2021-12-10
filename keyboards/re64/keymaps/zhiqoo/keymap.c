@@ -152,7 +152,7 @@ const rgblight_segment_t PROGMEM rgb_layer_1st[] = RGBLIGHT_LAYER_SEGMENTS(
     {19, 1, MY_HSV_MAGENTA}, {20, 3, MY_HSV_CYAN},  {23, 2, MY_HSV_YELLOW},
     {25, 1, MY_HSV_MAGENTA}, {26, 1, HSV_WHITE},    {27, 2, MY_HSV_MAGENTA}, {29, 1, MY_HSV_RED},
     {30, 34, HSV_OFF}, // right
-    {64, 6, HSV_OFF}, // left back
+    {64, 6, HSV_OFF} // left back
 );
 
 const rgblight_segment_t PROGMEM rgb_layer_2nd[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -162,7 +162,7 @@ const rgblight_segment_t PROGMEM rgb_layer_2nd[] = RGBLIGHT_LAYER_SEGMENTS(
     {19, 1, MY_HSV_MAGENTA}, {20, 3, MY_HSV_BLUE},  {23, 2, MY_HSV_PURPLE},
     {25, 1, MY_HSV_MAGENTA}, {26, 1, HSV_WHITE},    {27, 2, MY_HSV_MAGENTA}, {29, 1, MY_HSV_RED},
     {30, 34, HSV_OFF}, // right
-    {64, 6, HSV_OFF}, // left back
+    {64, 6, HSV_OFF} // left back
 );
 
 const rgblight_segment_t PROGMEM rgb_layer_3rd[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -172,7 +172,7 @@ const rgblight_segment_t PROGMEM rgb_layer_3rd[] = RGBLIGHT_LAYER_SEGMENTS(
     {19, 1, HSV_OFF},     {20, 5, HSV_WHITE},
     {25, 1, HSV_OFF},     {26, 1, MY_HSV_RED},   {27, 3, HSV_OFF},
     {30, 34, HSV_OFF}, // right
-    {64, 6, HSV_OFF}, // left back
+    {64, 6, HSV_OFF} // left back
 );
 
 const rgblight_segment_t PROGMEM rgb_layer_4th[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -186,7 +186,7 @@ const rgblight_segment_t PROGMEM rgb_layer_4th[] = RGBLIGHT_LAYER_SEGMENTS(
     {46, 6, MY_HSV_GREEN},   {52, 1, MY_HSV_PURPLE},
     {53, 5, MY_HSV_CYAN},    {58, 2, MY_HSV_PURPLE},
     {60, 4, MY_HSV_BLUE},
-    {64, 6, HSV_OFF}, // left back
+    {64, 6, HSV_OFF} // left back
 );
 
 const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
