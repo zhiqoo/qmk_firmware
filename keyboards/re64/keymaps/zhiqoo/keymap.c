@@ -1,6 +1,19 @@
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 
+
+#ifdef RGBLIGHT_LAYERS
+/* you can change color parameters as you want below */
+#define MY_HSV_CYAN    0x66, 0xC7, 0xBC
+#define MY_HSV_MAGENTA 0x00, 0xEB, 0xD1
+#define MY_HSV_RED     0x00, 0xFF, 0xD6
+#define MY_HSV_BLUE    0xA7, 0xE3, 0xC1
+#define MY_HSV_PURPLE  0xC3, 0xEB, 0xD1
+#define MY_HSV_GREEN   0x4F, 0xFF, 0xB2
+#define MY_HSV_YELLOW  0x1A, 0xFF, 0xE2
+/* if you want to change current lighting matrix for each layers, you can edit L154- */
+#endif
+
 enum layer_number {
     _L0 = 0,
     _L1,
@@ -137,55 +150,48 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 #endif // ENCODER_ENABLE
 
 #ifdef RGBLIGHT_LAYERS
-#define MY_HSV_CYAN    0x66, 0xC7, 0xBC
-#define MY_HSV_MAGENTA 0x00, 0xEB, 0xD1
-#define MY_HSV_RED     0x00, 0xFF, 0xD6
-#define MY_HSV_BLUE    0xA7, 0xE3, 0xC1
-#define MY_HSV_PURPLE  0xC3, 0xEB, 0xD1
-#define MY_HSV_GREEN   0x4F, 0xFF, 0xB2
-#define MY_HSV_YELLOW  0x1A, 0xFF, 0xE2
 
 const rgblight_segment_t PROGMEM rgb_layer_1st[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, MY_HSV_RED},      {1, 4, MY_HSV_CYAN},   {5, 2, MY_HSV_YELLOW}, //left
-    {7, 1, HSV_WHITE},       {8, 5, MY_HSV_CYAN},
-    {13, 1, MY_HSV_MAGENTA}, {14, 3, MY_HSV_CYAN},  {17, 2, MY_HSV_YELLOW},
-    {19, 1, MY_HSV_MAGENTA}, {20, 3, MY_HSV_CYAN},  {23, 2, MY_HSV_YELLOW},
-    {25, 1, MY_HSV_MAGENTA}, {26, 1, HSV_WHITE},    {27, 2, MY_HSV_MAGENTA}, {29, 1, MY_HSV_RED},
+    {0, 1, MY_HSV_RED},      {1, 4, MY_HSV_CYAN},   {5, 2, MY_HSV_YELLOW}, // left row1
+    {7, 1, HSV_WHITE},       {8, 5, MY_HSV_CYAN}, // left row2
+    {13, 1, MY_HSV_MAGENTA}, {14, 3, MY_HSV_CYAN},  {17, 2, MY_HSV_YELLOW}, // left row3
+    {19, 1, MY_HSV_MAGENTA}, {20, 3, MY_HSV_CYAN},  {23, 2, MY_HSV_YELLOW}, // left row4
+    {25, 1, MY_HSV_MAGENTA}, {26, 1, HSV_WHITE},    {27, 2, MY_HSV_MAGENTA}, {29, 1, MY_HSV_RED}, // left row5
     {30, 34, HSV_OFF}, // right
     {64, 6, HSV_OFF} // left back
 );
 
 const rgblight_segment_t PROGMEM rgb_layer_2nd[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, MY_HSV_RED},      {1, 4, MY_HSV_BLUE},   {5, 2, MY_HSV_PURPLE}, // left
-    {7, 1, HSV_WHITE},       {8, 5, MY_HSV_BLUE},
-    {13, 1, MY_HSV_MAGENTA}, {14, 3, MY_HSV_BLUE},  {17, 2, MY_HSV_PURPLE},
-    {19, 1, MY_HSV_MAGENTA}, {20, 3, MY_HSV_BLUE},  {23, 2, MY_HSV_PURPLE},
-    {25, 1, MY_HSV_MAGENTA}, {26, 1, HSV_WHITE},    {27, 2, MY_HSV_MAGENTA}, {29, 1, MY_HSV_RED},
+    {0, 1, MY_HSV_RED},      {1, 4, MY_HSV_BLUE},   {5, 2, MY_HSV_PURPLE}, // left row1
+    {7, 1, HSV_WHITE},       {8, 5, MY_HSV_BLUE},  // left row2
+    {13, 1, MY_HSV_MAGENTA}, {14, 3, MY_HSV_BLUE},  {17, 2, MY_HSV_PURPLE}, // left row3
+    {19, 1, MY_HSV_MAGENTA}, {20, 3, MY_HSV_BLUE},  {23, 2, MY_HSV_PURPLE}, // left row4
+    {25, 1, MY_HSV_MAGENTA}, {26, 1, HSV_WHITE},    {27, 2, MY_HSV_MAGENTA}, {29, 1, MY_HSV_RED}, // left row5
     {30, 34, HSV_OFF}, // right
     {64, 6, HSV_OFF} // left back
 );
 
 const rgblight_segment_t PROGMEM rgb_layer_3rd[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_OFF},      {1, 6, HSV_WHITE}, // left
-    {7, 1, HSV_OFF},      {8, 5, HSV_WHITE},
-    {13, 1, HSV_OFF},     {14, 5, HSV_WHITE},
-    {19, 1, HSV_OFF},     {20, 5, HSV_WHITE},
-    {25, 1, HSV_OFF},     {26, 1, MY_HSV_RED},   {27, 3, HSV_OFF},
+    {0, 1, HSV_OFF},      {1, 6, HSV_WHITE}, // left row1
+    {7, 1, HSV_OFF},      {8, 5, HSV_WHITE}, // left row2
+    {13, 1, HSV_OFF},     {14, 5, HSV_WHITE}, // left row3
+    {19, 1, HSV_OFF},     {20, 5, HSV_WHITE}, // left row4
+    {25, 1, HSV_OFF},     {26, 1, MY_HSV_RED},   {27, 3, HSV_OFF}, // left row5
     {30, 34, HSV_OFF}, // right
     {64, 6, HSV_OFF} // left back
 );
 
 const rgblight_segment_t PROGMEM rgb_layer_4th[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, MY_HSV_RED},      {1, 6, MY_HSV_MAGENTA}, // left
-    {7, 1, MY_HSV_PURPLE},   {8, 5, MY_HSV_YELLOW},
-    {13, 1, MY_HSV_PURPLE},  {14, 5, MY_HSV_GREEN},
-    {19, 1, MY_HSV_PURPLE},  {20, 5, MY_HSV_CYAN},
-    {25, 5, MY_HSV_BLUE},
-    {30, 8, MY_HSV_MAGENTA}, // right
-    {38, 7, MY_HSV_YELLOW},  {45, 1, MY_HSV_PURPLE},
-    {46, 6, MY_HSV_GREEN},   {52, 1, MY_HSV_PURPLE},
-    {53, 5, MY_HSV_CYAN},    {58, 2, MY_HSV_PURPLE},
-    {60, 4, MY_HSV_BLUE},
+    {0, 1, MY_HSV_RED},      {1, 6, MY_HSV_MAGENTA}, // left row1
+    {7, 1, MY_HSV_PURPLE},   {8, 5, MY_HSV_YELLOW}, // left row2
+    {13, 1, MY_HSV_PURPLE},  {14, 5, MY_HSV_GREEN}, // left row3
+    {19, 1, MY_HSV_PURPLE},  {20, 5, MY_HSV_CYAN}, // left row4
+    {25, 5, MY_HSV_BLUE}, // left row5
+    {30, 8, MY_HSV_MAGENTA}, // right row1
+    {38, 7, MY_HSV_YELLOW},  {45, 1, MY_HSV_PURPLE}, // right row2
+    {46, 6, MY_HSV_GREEN},   {52, 1, MY_HSV_PURPLE}, // right row3
+    {53, 5, MY_HSV_CYAN},    {58, 2, MY_HSV_PURPLE}, // right row4
+    {60, 4, MY_HSV_BLUE}, // right row5
     {64, 6, HSV_OFF} // left back
 );
 
