@@ -15,11 +15,3 @@
 // #define NO_AUTO_SHIFT_SPECIAL
 // NO_AUTO_SHIFT_NUMERIC
 // NO_AUTO_SHIFT_ALPHA
-
-// Underglow
-/*
-#undef RGBLED_NUM
-#define RGBLED_NUM 14    // Number of LEDs
-#define RGBLIGHT_ANIMATIONS
-#define RGBLIGHT_SLEEP
-*/

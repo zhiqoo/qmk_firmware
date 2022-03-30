@@ -2,11 +2,6 @@
 
 #include "config_common.h"
 
-#define OLED_FONT_H "./lib/glcdfont_re64.c"
-#define OLED_TIMEOUT 1000
-#define OLED_FADE_OUT
-#define OLED_FADE_OUT_INTERVAL 1
-
 #define VENDOR_ID    0x3938
 #define PRODUCT_ID   0x3634
 #define DEVICE_VER   0x0002
@@ -19,9 +14,8 @@
 
 #define MATRIX_ROW_PINS { E6, B4, B3, B2, B5 }
 #define MATRIX_COL_PINS { D4, F4, F5, F6, F7, B1, D7 }
-#define UNUSED_PINS
 
-#define DIODE_DIRECTION COL2ROW // = COL = Anode (+), ROW = Cathode (-)
+#define DIODE_DIRECTION COL2ROW
 
 /* Split hand configration */
 // #define SPLIT_HAND_MATRIX_GRID B5, B1
@@ -88,8 +82,14 @@ L40, L41, L42,      L43, L44,             R40, R41,      R42, R43, \
                 70, 71, 72,            73, 74, 75 \
 )
 
+#define OLED_FONT_H "./lib/glcdfont_re64.c"
+#define OLED_TIMEOUT 15000
+#define OLED_FADE_OUT
+#define OLED_FADE_OUT_INTERVAL 1
+
+
 // #define NO_ACTION_LAYER
 // #define NO_ACTION_TAPPING
 // #define NO_ACTION_ONESHOT
-// #define NO_ACTION_MACRO
-// #define NO_ACTION_FUNCTION
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
