@@ -8,8 +8,7 @@ enum layer_number {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
- [_QWERTY] = LAYOUT(
+[_QWERTY] = LAYOUT(
    // ,-----------------------------------------------------.                    ,-----------------------------------------------------.
         KC_GESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_EQL,
    // |--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -51,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            `-----------------------------------'  `-----------------------------------'
 ),
 
-  [_ADJ] = LAYOUT(
+[_ADJ] = LAYOUT(
     // ,-----------------------------------------------------.                    ,-----------------------------------------------------.
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // |--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -63,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // `--------------------------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------------------------'
                                     _______, _______, _______, _______,    _______, _______, _______, _______
     //                            `-----------------------------------'  `-----------------------------------'
-  )
+)
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -71,7 +70,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 #ifdef OLED_ENABLE
-
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   if (!is_keyboard_master())
     return OLED_ROTATION_180;
